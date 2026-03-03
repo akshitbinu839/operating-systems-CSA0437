@@ -1,0 +1,30 @@
+// Simplified version
+#include <stdio.h>
+
+int main(){
+    int n, bt[10], pr[10], rt[10];
+    printf("Enter n: ");
+    scanf("%d",&n);
+
+    for(int i=0;i<n;i++){
+        scanf("%d%d",&bt[i],&pr[i]);
+        rt[i]=bt[i];
+    }
+
+    int complete=0,time=0,shortest;
+    while(complete<n){
+        int min=999;
+        for(int i=0;i<n;i++)
+            if(rt[i]>0 && pr[i]<min){
+                min=pr[i];
+                shortest=i;
+            }
+        rt[shortest]--;
+        if(rt[shortest]==0)
+            complete++;
+        time++;
+    }
+
+    printf("Processes completed\n");
+    return 0;
+}
